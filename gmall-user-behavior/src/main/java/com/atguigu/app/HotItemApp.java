@@ -25,7 +25,6 @@ import java.util.Iterator;
 
 public class HotItemApp {
 
-
     public static void main(String[] args) throws Exception {
 
         //1.创建执行环境
@@ -34,7 +33,7 @@ public class HotItemApp {
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
         //2.从文件读取数据创建流并转换为JavaBean同时提取事件时间
-        SingleOutputStreamOperator<UserBehavior> userDS = env.readTextFile("input")
+        SingleOutputStreamOperator<UserBehavior> userDS = env.readTextFile("input/UserBehavior.csv")
                 .map(line -> {
                     String[] fileds = line.split(",");
                     return new UserBehavior(Long.parseLong(fileds[0]),
