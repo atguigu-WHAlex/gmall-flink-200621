@@ -4,8 +4,6 @@ import com.atguigu.bean.ApacheLog;
 import com.atguigu.bean.UrlViewCount;
 import org.apache.commons.compress.utils.Lists;
 import org.apache.flink.api.common.functions.AggregateFunction;
-import org.apache.flink.api.common.state.ListState;
-import org.apache.flink.api.common.state.ListStateDescriptor;
 import org.apache.flink.api.common.state.MapState;
 import org.apache.flink.api.common.state.MapStateDescriptor;
 import org.apache.flink.configuration.Configuration;
@@ -20,7 +18,6 @@ import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 import org.apache.flink.util.OutputTag;
 
-import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -183,9 +180,6 @@ public class HotUrlApp2 {
                 sb.append("\n");
             }
             sb.append("======================\n\n");
-
-            //清空状态
-//            listState.clear();
 
             Thread.sleep(1000);
 

@@ -11,6 +11,7 @@
     <modules>
         <module>gmall-user-behavior</module>
         <module>gmall-network-flow</module>
+        <module>gmall-market</module>
     </modules>
 
     <properties>
@@ -44,6 +45,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.12</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.3</version>
         </dependency>
     </dependencies>
 

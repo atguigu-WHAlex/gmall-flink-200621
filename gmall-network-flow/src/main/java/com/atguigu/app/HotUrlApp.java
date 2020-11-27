@@ -135,17 +135,17 @@ public class HotUrlApp {
             //注册定时器,用于处理状态中的数据
             ctx.timerService().registerEventTimeTimer(value.getWindowEnd() + 1L);
             //注册定时器,用于触发清空状态的
-            ctx.timerService().registerEventTimeTimer(value.getWindowEnd() + 60000L);
+//            ctx.timerService().registerEventTimeTimer(value.getWindowEnd() + 60000L);
         }
 
         @Override
         public void onTimer(long timestamp, OnTimerContext ctx, Collector<String> out) throws Exception {
 
-            if (timestamp == ctx.getCurrentKey() + 60000L) {
-                //清空状态
-                listState.clear();
-                return;
-            }
+//            if (timestamp == ctx.getCurrentKey() + 60000L) {
+//                //清空状态
+//                listState.clear();
+//                return;
+//            }
 
             //1.取出状态中的数据
             Iterator<UrlViewCount> iterator = listState.get().iterator();
@@ -181,7 +181,7 @@ public class HotUrlApp {
             sb.append("======================\n\n");
 
             //清空状态
-//            listState.clear();
+            listState.clear();
 
             Thread.sleep(1000);
 
