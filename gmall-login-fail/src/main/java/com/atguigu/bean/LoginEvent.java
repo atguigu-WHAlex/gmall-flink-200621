@@ -13,4 +13,3 @@ public class LoginEvent {
     private String eventType;
     private Long timestamp;
 }
-

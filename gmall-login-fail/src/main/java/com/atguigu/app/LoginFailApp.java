@@ -43,7 +43,7 @@ public class LoginFailApp {
 
         //3.按照userId进行分组
         SingleOutputStreamOperator<String> result = loginEventDS
-                .keyBy(data -> data.getUserId())
+                .keyBy(LoginEvent::getUserId)
                 .process(new LoginFailKeyProcessFunc());
 
         //4.打印
@@ -51,8 +51,6 @@ public class LoginFailApp {
 
         //5.执行
         env.execute();
-
-
     }
 
     public static class LoginFailKeyProcessFunc extends KeyedProcessFunction<Long, LoginEvent, String> {
@@ -63,8 +61,8 @@ public class LoginFailApp {
 
         @Override
         public void open(Configuration parameters) throws Exception {
-            listState = getRuntimeContext().getListState(new ListStateDescriptor<LoginEvent>("list-state", LoginEvent.class));
-            tsState = getRuntimeContext().getState(new ValueStateDescriptor<Long>("ts-state", Long.class));
+            listState = getRuntimeContext().getListState(new ListStateDescriptor<>("list-state", LoginEvent.class));
+            tsState = getRuntimeContext().getState(new ValueStateDescriptor<>("ts-state", Long.class));
         }
 
         @Override
