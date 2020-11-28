@@ -13,6 +13,7 @@
         <module>gmall-network-flow</module>
         <module>gmall-market</module>
         <module>gmall-login-fail</module>
+        <module>gmall-order-pay</module>
     </modules>
 
     <properties>
